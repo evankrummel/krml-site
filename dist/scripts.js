@@ -170,6 +170,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById(modalId);
         if (!modal) return;
 
+        // If it's the video modal, pause the video
+        if (modalId === 'video-modal') {
+            const videoPlayer = document.getElementById('modal-video-player');
+            if (videoPlayer) {
+                videoPlayer.pause();
+                videoPlayer.src = '';
+            }
+        }
+
         modal.classList.remove('active');
         if (mainContent) {
             mainContent.style.filter = "none";
@@ -222,7 +231,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('click', (e) => {
         modals.forEach(modal => {
-            if (e.target === modal) {
+            if (modal.id === 'video-modal' && modal.classList.contains('active')) {
+                // For video modal, close if clicking outside the video container
+                const videoContainer = modal.querySelector('.video-container');
+                const closeButton = modal.querySelector('.video-close-button');
+                
+                // Close if clicking on the modal overlay itself, or outside the video container
+                if (e.target === modal || (videoContainer && !videoContainer.contains(e.target) && e.target !== closeButton)) {
+                    const videoPlayer = document.getElementById('modal-video-player');
+                    if (videoPlayer) {
+                        videoPlayer.pause();
+                        videoPlayer.src = '';
+                    }
+                    closeModal(modal.id);
+                }
+            } else if (e.target === modal) {
+                // For other modals, close when clicking directly on modal
                 closeModal(modal.id);
             }
         });
@@ -233,6 +257,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') {
             modals.forEach(modal => {
                 if (modal.classList.contains('active')) {
+                    // If it's the video modal, pause the video
+                    if (modal.id === 'video-modal') {
+                        const videoPlayer = document.getElementById('modal-video-player');
+                        if (videoPlayer) {
+                            videoPlayer.pause();
+                            videoPlayer.src = '';
+                        }
+                    }
                     closeModal(modal.id);
                 }
             });
@@ -307,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Video Player Logic - autoplay on videos.html page
+    // Video Player Logic - autoplay on videos.html page (for the old video player if it exists)
     const videoPlayer = document.getElementById('video-player');
     const muteBtn = document.getElementById('video-mute-btn');
     const volumeOnIcon = document.getElementById('volume-on');
@@ -339,5 +371,324 @@ document.addEventListener('DOMContentLoaded', () => {
                 volumeOffIcon.classList.toggle('hidden', !videoPlayer.muted);
             });
         }
+    }
+
+    // Carousel functionality for videos page
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+
+    // Helper function to reset and re-trigger content animations
+    // Safari doesn't reset CSS animations when DOM elements are moved, so we need to manually reset them
+    function resetContentAnimations() {
+        // Wait for DOM to update after carousel movement
+        // Use double requestAnimationFrame to ensure Safari has processed the DOM changes
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                const activeItem = document.querySelector(".slide .item:nth-child(2)");
+                if (activeItem) {
+                    const content = activeItem.querySelector(".content");
+                    if (content) {
+                        const name = content.querySelector(".name");
+                        const des = content.querySelector(".des");
+                        const button = content.querySelector("button");
+                        
+                        // Reset and re-trigger animations for Safari compatibility
+                        [name, des, button].forEach(el => {
+                            if (el) {
+                                // Temporarily remove animation to reset it
+                                el.style.animation = 'none';
+                                // Reset opacity to initial state
+                                el.style.opacity = '0';
+                                
+                                // Force reflow
+                                void el.offsetHeight;
+                                
+                                // Re-enable animation by removing inline style (CSS will take over)
+                                el.style.animation = '';
+                                el.style.opacity = '';
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    }
+
+    if (nextBtn && prevBtn) {
+        nextBtn.addEventListener("click", function () {
+            let items = document.querySelectorAll(".item");
+            const slideContainer = document.querySelector(".slide");
+            if (slideContainer && items.length > 0) {
+                const firstItem = items[0];
+                
+                // Position the item off-screen to the right BEFORE moving it
+                // This ensures it slides in smoothly from the right instead of appearing
+                // Use 100% to position at container edge (container has overflow: hidden to clip it)
+                firstItem.style.left = '100%';
+                
+                // Force a reflow to ensure the style is applied
+                void firstItem.offsetHeight;
+                
+                // Now move the item to the end
+                // When it becomes the last item, the CSS nth-child rule will apply
+                // but the inline style will keep it off-screen temporarily
+                slideContainer.appendChild(firstItem);
+                
+                // Reset content animations for Safari compatibility
+                resetContentAnimations();
+                
+                // Wait a frame for the browser to apply the new CSS position,
+                // then remove the inline style so it can animate smoothly
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        // Remove inline styles - the item will now animate from
+                        // off-screen to its CSS position
+                        firstItem.style.left = '';
+                        firstItem.style.transform = '';
+                    });
+                });
+            }
+        });
+
+        prevBtn.addEventListener("click", function () {
+            let items = document.querySelectorAll(".item");
+            const slideContainer = document.querySelector(".slide");
+            if (slideContainer && items.length > 0) {
+                // Move the last item to the beginning of the slide container
+                slideContainer.prepend(items[items.length - 1]);
+                
+                // Reset content animations for Safari compatibility
+                resetContentAnimations();
+            }
+        });
+    }
+
+    // Add click handlers to preview items (items that are not the active one)
+    // The active item is nth-child(2), so items 3+ are previews
+    let isTransitioning = false; // Prevent rapid clicks during transitions
+    
+    function moveToItem(targetItem) {
+        if (isTransitioning) return; // Prevent multiple simultaneous transitions
+        isTransitioning = true;
+        
+        const slideContainer = document.querySelector(".slide");
+        if (!slideContainer) {
+            isTransitioning = false;
+            return;
+        }
+        
+        const items = Array.from(document.querySelectorAll(".slide .item"));
+        const clickedIndex = items.indexOf(targetItem);
+        
+        // The active item is at index 1 (2nd child, nth-child(2))
+        const targetPosition = 1;
+        const positionsToMove = clickedIndex - targetPosition;
+        
+        if (positionsToMove > 0) {
+            // Move items forward until the clicked item becomes the active one
+            let movesCompleted = 0;
+            
+            function performMove() {
+                if (movesCompleted >= positionsToMove) {
+                    // All moves completed
+                    resetContentAnimations();
+                    setTimeout(() => {
+                        isTransitioning = false;
+                    }, 500); // Wait for transition to complete
+                    return;
+                }
+                
+                const currentItems = Array.from(document.querySelectorAll(".slide .item"));
+                if (currentItems.length === 0) {
+                    isTransitioning = false;
+                    return;
+                }
+                
+                const firstItem = currentItems[0];
+                
+                // Position the first item off-screen to the right
+                firstItem.style.left = '100%';
+                void firstItem.offsetHeight; // Force reflow
+                
+                // Move it to the end
+                slideContainer.appendChild(firstItem);
+                
+                // Reset inline styles after a frame
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        firstItem.style.left = '';
+                        firstItem.style.transform = '';
+                        
+                        movesCompleted++;
+                        // Continue with next move after transition
+                        setTimeout(performMove, 50);
+                    });
+                });
+            }
+            
+            performMove();
+        } else {
+            isTransitioning = false;
+        }
+    }
+    
+    function setupPreviewClicks() {
+        const items = document.querySelectorAll(".slide .item");
+        
+        items.forEach((item, index) => {
+            // Skip the first two items (they're the active/background items)
+            // Only make items from position 3 onwards clickable
+            if (index >= 2) {
+                // Add cursor pointer to indicate clickability
+                item.style.cursor = 'pointer';
+            } else {
+                // Remove cursor pointer from active items
+                item.style.cursor = '';
+            }
+        });
+    }
+    
+    // Use event delegation on the slide container for better performance
+    const slideContainer = document.querySelector(".slide");
+    if (slideContainer) {
+        slideContainer.addEventListener("click", function(e) {
+            const clickedItem = e.target.closest(".item");
+            if (!clickedItem) return;
+            
+            const items = Array.from(document.querySelectorAll(".slide .item"));
+            const clickedIndex = items.indexOf(clickedItem);
+            
+            // Only handle clicks on preview items (index 2 or higher)
+            if (clickedIndex >= 2) {
+                e.stopPropagation();
+                moveToItem(clickedItem);
+            }
+        });
+        
+        // Setup initial cursor styles
+        setupPreviewClicks();
+        
+        // Update cursor styles after carousel movements
+        const observer = new MutationObserver(() => {
+            setupPreviewClicks();
+        });
+        
+        observer.observe(slideContainer, { childList: true });
+    }
+
+    // Video Modal functionality
+    const modalVideoPlayer = document.getElementById('modal-video-player');
+    const modalMuteBtn = document.getElementById('modal-video-mute-btn');
+    const modalVolumeOnIcon = document.getElementById('modal-volume-on');
+    const modalVolumeOffIcon = document.getElementById('modal-volume-off');
+    const seeMoreButtons = document.querySelectorAll('.seeMore[data-video-src]');
+
+    // Function to setup video modal player
+    function setupVideoModalPlayer() {
+        if (modalVideoPlayer && modalMuteBtn && modalVolumeOnIcon && modalVolumeOffIcon) {
+            // Toggle video playback on click
+            modalVideoPlayer.addEventListener('click', () => {
+                if (modalVideoPlayer.paused) {
+                    modalVideoPlayer.play();
+                } else {
+                    modalVideoPlayer.pause();
+                }
+            });
+
+            // Mute/Unmute button functionality
+            modalMuteBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent triggering video click
+                modalVideoPlayer.muted = !modalVideoPlayer.muted;
+                modalVolumeOnIcon.classList.toggle('hidden', modalVideoPlayer.muted);
+                modalVolumeOffIcon.classList.toggle('hidden', !modalVideoPlayer.muted);
+            });
+        }
+    }
+
+    // Setup video modal player on page load
+    setupVideoModalPlayer();
+
+    // Handle "Watch Video" button clicks
+    seeMoreButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const videoSrc = button.getAttribute('data-video-src');
+            
+            if (modalVideoPlayer && videoSrc) {
+                // Set video source
+                modalVideoPlayer.src = videoSrc;
+                
+                // Open the video modal
+                openModal('video-modal');
+                
+                // Play the video after a short delay to ensure modal is open
+                setTimeout(() => {
+                    modalVideoPlayer.play().catch(err => {
+                        console.log('Video autoplay prevented:', err);
+                    });
+                }, 300);
+            }
+        });
+    });
+
+    // Note: Video pausing when modal closes is handled in the closeModal function above
+
+    // Parallax effect for homepage hero background image with smooth interpolation
+    const backgroundImage = document.querySelector('.background-image');
+    
+    if (backgroundImage && mainContent) {
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const windowWidth = window.innerWidth / 2.5;
+        const windowHeight = window.innerHeight / 2.5;
+        
+        // Current and target positions for smooth interpolation
+        let currentX = -5;
+        let currentY = -5;
+        let targetX = -5;
+        let targetY = -5;
+        let animationFrame = null;
+        
+        // Easing function for smooth, viscous movement (ease-out cubic)
+        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+        
+        // Smooth interpolation function
+        const updateTransform = () => {
+            const speed = 0.08; // Lower = slower, more viscous (0.05-0.1 for more obvious effect)
+            const diffX = targetX - currentX;
+            const diffY = targetY - currentY;
+            
+            // Only animate if there's a meaningful difference
+            if (Math.abs(diffX) > 0.005 || Math.abs(diffY) > 0.005) {
+                // Smooth interpolation with easing
+                const t = speed;
+                const easedT = easeOutCubic(t);
+                currentX += diffX * easedT;
+                currentY += diffY * easedT;
+                
+                backgroundImage.style.transform = `translate3d(${currentX}%, ${currentY}%, 0)`;
+                animationFrame = requestAnimationFrame(updateTransform);
+            } else {
+                // Snap to final position when close enough
+                currentX = targetX;
+                currentY = targetY;
+                backgroundImage.style.transform = `translate3d(${currentX}%, ${currentY}%, 0)`;
+                animationFrame = null;
+            }
+        };
+        
+        mainContent.addEventListener('mousemove', (e) => {
+            const offsetX = (e.clientX - centerX) / windowWidth;
+            const offsetY = (e.clientY - centerY) / windowHeight;
+            
+            // Update target position
+            targetX = -5 - offsetX;
+            targetY = -5 - offsetY;
+            
+            // Start animation loop if not already running
+            if (!animationFrame) {
+                animationFrame = requestAnimationFrame(updateTransform);
+            }
+        });
     }
 });

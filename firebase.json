@@ -22,6 +22,11 @@
         "source": "/found",
         "destination": "/lost",
         "type": 301
+      },
+      {
+        "source": "/mve",
+        "destination": "/images/rickroll.mp4",
+        "type": 301
       }
     ]
 

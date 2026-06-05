@@ -73,25 +73,91 @@
       </div>
     </nav>
 
-    <!-- Video Content -->
-    <div class="flex-grow flex flex-col items-center justify-center px-4 py-24 md:py-32">
-      <div class="w-full max-w-4xl">
-        <div class="text-[#A0BBA8] dashiell-text">
-          <div class="flex justify-between items-start w-full mb-4">
-            <h2 class="h1-text text-2xl font-bold text-[#A0BBA8]">Hmm... not much here just yet...</h2>
+    <!-- Carousel Content -->
+    <div class="container">
+      <div class="slide">
+        <div
+          class="item"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          "
+        >
+          <div class="content">
+            <div class="name">Joyn Health</div>
+            <div class="des">
+              "The Meet & Greet", a short, 1-minute ad for the Grand Rapids-based healthcare startup.
+            </div>
+            <button class="seeMore" data-video-src="../images/sunset.mov">Watch Video</button>
           </div>
-          <div class="relative w-full overflow-hidden rounded-lg group video-container">
-            <p class="mt-4 text-[#A0BBA8]">so enjoy this video of the sunset in the meantime. cheers.</p>
-            <video id="video-player" loop playsinline muted
-                   src="../images/sunset.mov"></video>
-            <button id="video-mute-btn" class="absolute bottom-4 right-4 text-white p-2 rounded-full bg-black bg-opacity-50 
-                                               transition-transform duration-200 hover:scale-110">
-              <img id="volume-on" class="w-6 h-6 hidden" src="../images/unmute.png" alt="Unmute">
-              <img id="volume-off" class="w-6 h-6" src="../images/mute.png" alt="Mute">
-            </button>
+        </div>
+
+        <div
+          class="item"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1439792675105-701e6a4ab6f0?q=80&w=1173&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          "
+        >
+          <div class="content">
+            <div class="name">Evan Krummel</div>
+            <div class="des">
+              "Why The Touch Bar Failed", a video I made for YouTube in late 2023, discussing the failures of the Touch Bar on the MacBook Pro.
+            </div>
+            <button class="seeMore" data-video-src="../images/sunset.mov">Watch Video</button>
+          </div>
+        </div>
+
+        <div
+          class="item"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1483982258113-b72862e6cff6?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          "
+        >
+          <div class="content">
+            <div class="name">The Michigan Daily</div>
+            <div class="des">
+              "Standing Room Only: Seventh Street Band", Wander dramatic, mist-laden mountain paths that feel straight out of a dream.
+            </div>
+            <button class="seeMore" data-video-src="../images/sunset.mov">Watch Video</button>
+          </div>
+        </div>
+
+        <div
+          class="item"
+          style="
+            background-image: url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          "
+        >
+          <div class="content">
+            <div class="name">The Michigan Daily</div>
+            <div class="des">
+              "Inside the MDining Bakeshop", was an investigative video I made for The Daily, which explored the inner workings of the MDining Bakeshop.
+            </div>
+            <button class="seeMore" data-video-src="../images/sunset.mov">Watch Video</button>
           </div>
         </div>
       </div>
+      <div class="button">
+        <button class="prev">◁</button>
+        <button class="next">▷</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="modal">
+    <!-- Close Button -->
+    <span class="close-button video-close-button" data-modal="video-modal">&times;</span>
+    
+    <!-- Video Container -->
+    <div class="video-container">
+      <video id="modal-video-player" loop playsinline muted
+             class="w-full h-full"></video>
+      <button id="modal-video-mute-btn" class="text-white p-2 rounded-full bg-black bg-opacity-50 
+                                               transition-transform duration-200 hover:scale-110">
+        <img id="modal-volume-on" class="w-6 h-6 hidden" src="../images/unmute.png" alt="Unmute">
+        <img id="modal-volume-off" class="w-6 h-6" src="../images/mute.png" alt="Mute">
+      </button>
     </div>
   </div>
 
