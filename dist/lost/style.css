@@ -1,0 +1,673 @@
+    :root {
+        --navbar-bg: #A0BBA8;
+        --navbar-bg-dark: #174C38;
+        --border-1: rgba(160, 187, 168, 0.6); /* top border */
+        --border-2: rgba(160, 187, 168, 0.3); /* bottom border */
+    }
+
+    @font-face {
+        font-family: 'Dashiell Text';
+        src: url('/fonts/DashiellText-Medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Superior Title';
+        src: url('/fonts/SuperiorTitle-Bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    html {
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Dashiell Text', sans-serif;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+    }
+    
+    /* Fixed body for index page only */
+    body:has(#main-content.h-screen) {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    /* Overflow hidden for main content to contain parallax background */
+    #main-content {
+        overflow: hidden;
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        position: relative;
+        /* Prevent children from extending beyond */
+        contain: layout;
+    }
+
+    .h1-text {
+        font-family: 'Superior Title', serif;
+    }
+    
+    /* The CSS for your background image */
+    .background-image {
+        background-image: url('./images/background.jpeg');
+        background-size: cover;
+        background-position: center;
+        width: 110%;
+        height: 110%;
+        left: 0;
+        top: 0;
+        position: absolute;
+        transform: translate3d(-5%, -5%, 0);
+    }
+
+    .pill-button {
+        border-radius: 9999px;
+        padding: 0.25rem 1rem;
+        font-weight: 500;
+    }
+
+    .nav-link {
+        transition: color 0.3s ease;
+    }
+
+    /* Frosted glass navbar */
+    #navbar {
+        --border-width: 1px;
+        border-radius: 9999px;
+        background: rgba(160, 187, 168, 1.0);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    #navbar > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    #navbar::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        border-radius: inherit;
+        border: var(--border-width) solid transparent;
+        background: linear-gradient(var(--border-1), var(--border-2)) border-box;
+        -webkit-mask: linear-gradient(black, black) border-box,
+            linear-gradient(black, black) padding-box;
+        mask: linear-gradient(black, black) border-box,
+            linear-gradient(black, black) padding-box;
+        -webkit-mask-composite: subtract;
+        mask-composite: subtract;
+    }
+
+    .dashiell-text {
+        font-family: 'Dashiell Text', sans-serif;
+    }
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        /* This is the subtle black overlay */
+        background-color: rgba(0, 0, 0, 0);
+        transition: background-color 0.5s ease;
+    }
+    
+    .modal.active {
+        display: flex; /* Use flex to center */
+        background-color: rgba(0, 0, 0, 0.2);
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+
+    .modal-content {
+        position: relative;
+        /* Frosted glass effect */
+        --border-width: 1px;
+        background: rgba(160, 187, 168, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 20px;
+        border-radius: 1rem;
+        max-width: 90%;
+        max-height: 90vh;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s cubic-bezier(0.65, 0.05, 0.36, 1), transform 0.6s cubic-bezier(0.65, 0.05, 0.36, 1);
+    }
+
+    .modal-content > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .modal-content::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        border-radius: inherit;
+        border: var(--border-width) solid transparent;
+        background: linear-gradient(var(--border-1), var(--border-2)) border-box;
+        -webkit-mask: linear-gradient(black, black) border-box,
+            linear-gradient(black, black) padding-box;
+        mask: linear-gradient(black, black) border-box,
+            linear-gradient(black, black) padding-box;
+        -webkit-mask-composite: subtract;
+        mask-composite: subtract;
+    }
+    
+    /* Video modal - no box, just video player */
+    #video-modal .video-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% + 20px));
+        width: 90%;
+        max-width: 1200px;
+        max-height: 90vh;
+        aspect-ratio: 16 / 9;
+    }
+
+    #video-modal.active .video-container {
+        transform: translate(-50%, -50%);
+    }
+    
+    #video-modal .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        z-index: 1;
+    }
+    
+    /* Mute button positioned in bottom right of screen */
+    #video-modal #modal-video-mute-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1001;
+    }
+
+/* Header section */
+#contact-modal .modal-content .header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #174C38;
+    margin-bottom: 15px;
+}
+
+#contact-modal .modal-content .close:hover {
+    transform: scale(1.2);
+}
+
+/* Contact info section */
+#contact-modal .contact-info-section {
+    margin-top: 20px; /* space below header */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+    #photo-modal .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% + 20px));
+        width: 70%;
+        height: 75vh;
+        max-width: none;
+        max-height: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #photo-modal.active .modal-content {
+        transform: translate(-50%, -50%);
+    }
+
+    #photo-modal .modal-content .header {
+        position: sticky;
+        top: 0;
+        background: transparent;
+        padding: 20px 20px 0;
+        z-index: 10;
+    }
+    
+    #photo-modal .gallery-container {
+        flex-grow: 1;
+        overflow-y: hidden; /* Prevent scrolling on the main container */
+        padding: 0 20px 20px;
+    }
+
+    /* Contact modal positioning */
+    #contact-modal .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% + 20px));
+    }
+
+    #contact-modal.active .modal-content {
+        transform: translate(-50%, -50%);
+    }
+
+    @media (min-width: 768px) {
+        .modal-content {
+            width: 66.67%;
+            height: 75vh;
+        }
+        #contact-modal .modal-content {
+            width: 95%;
+            padding: 15px;
+        }
+    }
+
+    .modal.active .modal-content {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .close-button {
+        color: #174C38;
+        font-size: 28px;
+        font-weight: bold;
+        line-height: 1;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* Close button for video modal - override general close button styles */
+    #video-modal .video-close-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        color: var(--navbar-bg) !important;
+        font-size: 48px;
+        font-weight: bold;
+        line-height: 1;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    #video-modal .video-close-button:hover {
+        transform: scale(1.2);
+        color: var(--navbar-bg) !important;
+    }
+
+    /* Preloader Styles */
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #A0BBA8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        transition: opacity 0.6s ease-out, visibility 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: scale(1.1);
+    }
+
+    .preloader-logo {
+        width: 200px;
+        height: auto;
+        animation: beat 3s ease-in-out infinite;
+    }
+
+    @keyframes beat {
+        0%, 100% {
+            transform: scale(1);
+        }
+        10% {
+            transform: scale(1.1);
+        }
+        20% {
+            transform: scale(1);
+        }
+        30% {
+            transform: scale(1.1);
+        }
+        40% {
+            transform: scale(1);
+        }
+        /* Rest of the time (40%-100%) stays at scale(1) */
+    }
+
+    /* Frosted glass contact box */
+    .contact-box {
+        --border-width: 1px;
+        background: rgba(160, 187, 168, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-box > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .contact-box::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        border-radius: inherit;
+        border: var(--border-width) solid transparent;
+        background: linear-gradient(var(--border-1), var(--border-2)) border-box;
+        -webkit-mask: linear-gradient(black, black) border-box,
+            linear-gradient(black, black) padding-box;
+        mask: linear-gradient(black, black) border-box,
+            linear-gradient(black, black) padding-box;
+        -webkit-mask-composite: subtract;
+        mask-composite: subtract;
+    }
+
+    /* Carousel Styles */
+    .container {
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        background: #f5f5f5;
+        border-radius: 0;
+        overflow: hidden;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* Prevent absolutely positioned children from extending document width */
+        contain: layout style;
+    }
+    
+    /* Ensure body background matches container on videos page to hide any gaps */
+    /* Override Tailwind background when container is present */
+    body:has(.container) {
+        background-color: #f5f5f5 !important;
+        max-width: 100vw;
+        overflow-x: clip;
+    }
+    
+    /* Ensure container covers full viewport */
+    .container {
+        min-width: 100%;
+    }
+    
+    .container .slide {
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden; /* Clip items that extend beyond container */
+        max-width: 100%; /* Prevent expansion */
+        /* Ensure this container doesn't extend beyond parent */
+        contain: layout;
+    }
+    
+    .container .slide .item {
+        width: 200px;
+        height: 250px;
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        border-radius: 20px;
+        background-position: 50% 50%;
+        background-size: cover;
+        display: inline-block;
+        transition: all 0.5s;
+    }
+    
+    /* Hover effect for clickable preview items (items 3+) */
+    .slide .item:nth-child(n + 3) {
+        transition: all 0.5s, transform 0.2s ease;
+    }
+    
+    .slide .item:nth-child(n + 3):hover {
+        transform: translate(0, -50%) scale(1.05);
+        z-index: 10;
+    }
+    
+    .slide .item:nth-child(1),
+    .slide .item:nth-child(2) {
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+        border-radius: 0;
+        width: 100%;
+        height: 100%;
+        transition: all .5s;
+    }
+    
+    .slide .item:nth-child(3) {
+        left: 75%;
+    }
+    
+    .slide .item:nth-child(4) {
+        left: calc(75% + 220px);
+    }
+    
+    .slide .item:nth-child(5) {
+        left: calc(75% + 440px);
+    }
+    
+    .slide .item:nth-child(n + 6) {
+        left: calc(75% + 660px);
+        opacity: 0;
+    }
+    
+    .item .content {
+        position: absolute;
+        top: 50%;
+        left: 100px;
+        width: 300px;
+        text-align: left;
+        color: #eee;
+        transform: translate(0, -50%);
+        font-family: system-ui;
+        display: none;
+    }
+    
+    .slide .item:nth-child(2) .content {
+        display: block;
+    }
+    
+    .content .name {
+        font-family: 'Superior Title', serif;
+        font-size: 40px;
+        font-weight: bold;
+        opacity: 0;
+        animation: animate 1s ease-in-out 1 forwards;
+    }
+    
+    .content .des {
+        font-family: 'Dashiell Text', sans-serif;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: animate 1s ease-in-out 0.3s 1 forwards;
+    }
+    
+    .content button {
+        font-family: 'Dashiell Text', sans-serif;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0;
+        border-radius: 10px;
+        background-color: #174C38;
+        transition: all 0.5s;
+        animation: animate 1s ease-in-out 0.6s 1 forwards;
+    }
+    
+    .content button:hover {
+        background-color: #A0BBA8;
+    }
+    
+    @keyframes animate {
+        from {
+            opacity: 0;
+            transform: translate(0, 100px);
+            filter: blur(33px);
+        }
+        to {
+            opacity: 1;
+            transform: translate(0);
+            filter: blur(0);
+        }
+    }
+    
+    .button {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        left: 45%;
+        right: 50%;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        position: absolute;
+        bottom: 20px;
+    }
+    
+    .button button {
+        width: 40px;
+        height: 35px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        margin: 0 5px;
+        transition: all 0.3s ease;
+        transform: scale(1); /* Explicit base scale */
+        /* Frosted glass effect matching navbar */
+        background: rgba(160, 187, 168, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        color: #174C38;
+        border: 1px solid rgba(23, 76, 56, 0.3);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    
+    .button button:hover {
+        background: rgba(160, 187, 168, 0.9);
+        transform: scale(1.1);
+        border-color: rgba(23, 76, 56, 0.5);
+    }
+    
+    .button button:focus {
+        transform: scale(1.1);
+        background: rgba(160, 187, 168, 0.9);
+        border-color: rgba(23, 76, 56, 0.5);
+        outline: none;
+    }
+    
+    .button button:active {
+        transform: scale(1.02);
+        background: rgba(160, 187, 168, 0.95);
+    }
+    
+    .button button:not(:hover):not(:focus):not(:active) {
+        transform: scale(1);
+    }
+    
+    .next,
+    .prev {
+        font-weight: normal;
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 24px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .next {
+        padding: 0 0 0 3px;
+    }
+    
+    .prev {
+        padding: 0 3px 0 0;
+    }
+
+    /* Video Modal Styles */
+    #video-modal .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% + 20px));
+        width: 80%;
+        height: auto;
+        max-width: none;
+        max-height: 75vh;
+    }
+
+    #video-modal.active .modal-content {
+        transform: translate(-50%, -50%);
+    }
+    
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 aspect ratio */
+    }
+    
+    .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
