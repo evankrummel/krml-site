@@ -1,8 +1,22 @@
     :root {
-        --navbar-bg: #A0BBA8;
-        --navbar-bg-dark: #174C38;
-        --border-1: rgba(160, 187, 168, 0.6); /* top border */
-        --border-2: rgba(160, 187, 168, 0.3); /* bottom border */
+        --cream: #e9e1db;
+        --dark-blue: #242c3d;
+        --cream-alpha: #e9e1db34;
+        --light-grey: #eee;
+        --off-white: #f5f5f5;
+        --black-8: rgba(0, 0, 0, 0.08);
+        --black-10: rgba(0, 0, 0, 0.1);
+        --black-20: rgba(0, 0, 0, 0.2);
+        --transparent-black: rgba(0, 0, 0, 0);
+        --green-30: rgba(23, 76, 56, 0.3);
+        --green-50: rgba(23, 76, 56, 0.5);
+
+        --navbar-bg: var(--cream);
+        --navbar-bg-dark: var(--dark-blue);
+        --border-1: var(--cream);
+        /* top border */
+        --border-2: var(--cream-alpha);
+        /* bottom border */
     }
 
     @font-face {
@@ -20,28 +34,30 @@
     }
 
     html {
-        overflow-x: hidden; /* Prevent horizontal scrolling */
+        overflow-x: hidden;
+        /* Prevent horizontal scrolling */
         margin: 0;
         padding: 0;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
     }
-    
+
     * {
         box-sizing: border-box;
     }
-    
+
     body {
         font-family: 'Dashiell Text', sans-serif;
-        overflow-x: hidden; /* Prevent horizontal scrolling */
+        overflow-x: hidden;
+        /* Prevent horizontal scrolling */
         margin: 0;
         padding: 0;
         width: 100%;
         max-width: 100%;
         position: relative;
     }
-    
+
     /* Fixed body for index page only */
     body.h-screen {
         position: fixed;
@@ -67,7 +83,7 @@
     .h1-text {
         font-family: 'Superior Title', serif;
     }
-    
+
     /* The CSS for your background image */
     .background-image {
         background-image: url('./images/background.jpeg');
@@ -95,12 +111,12 @@
     #navbar {
         --border-width: 1px;
         border-radius: 9999px;
-        background: rgba(160, 187, 168, 1.0);
+        background: var(--cream);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
     }
 
-    #navbar > * {
+    #navbar>* {
         position: relative;
         z-index: 1;
     }
@@ -126,7 +142,8 @@
     }
 
     .modal {
-        display: none; /* Hidden by default */
+        display: none;
+        /* Hidden by default */
         position: fixed;
         z-index: 100;
         left: 0;
@@ -135,35 +152,38 @@
         height: 100%;
         overflow: auto;
         /* This is the subtle black overlay */
-        background-color: rgba(0, 0, 0, 0);
+        background-color: var(--transparent-black);
         transition: background-color 0.5s ease;
     }
-    
+
     .modal.active {
-        display: flex; /* Use flex to center */
-        background-color: rgba(0, 0, 0, 0.2);
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
+        display: flex;
+        /* Use flex to center */
+        background-color: var(--black-20);
+        justify-content: center;
+        /* Center horizontally */
+        align-items: center;
+        /* Center vertically */
     }
 
     .modal-content {
         position: relative;
         /* Frosted glass effect */
         --border-width: 1px;
-        background: rgba(160, 187, 168, 0.8);
+        background: var(--cream);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         padding: 20px;
         border-radius: 1rem;
         max-width: 90%;
         max-height: 90vh;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 6px var(--black-10), 0 1px 3px var(--black-8);
         opacity: 0;
         transform: translateY(20px);
         transition: opacity 0.6s cubic-bezier(0.65, 0.05, 0.36, 1), transform 0.6s cubic-bezier(0.65, 0.05, 0.36, 1);
     }
 
-    .modal-content > * {
+    .modal-content>* {
         position: relative;
         z-index: 1;
     }
@@ -183,7 +203,7 @@
         -webkit-mask-composite: subtract;
         mask-composite: subtract;
     }
-    
+
     /* Video modal - no box, just video player */
     #video-modal .video-container {
         position: absolute;
@@ -199,7 +219,7 @@
     #video-modal.active .video-container {
         transform: translate(-50%, -50%);
     }
-    
+
     #video-modal .video-container video {
         position: absolute;
         top: 0;
@@ -209,7 +229,7 @@
         object-fit: contain;
         z-index: 1;
     }
-    
+
     /* Mute button positioned in bottom right of screen */
     #video-modal #modal-video-mute-btn {
         position: fixed;
@@ -218,32 +238,33 @@
         z-index: 1001;
     }
 
-/* Header section */
-#contact-modal .modal-content .header {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-    color: #174C38;
-    margin-bottom: 15px;
-}
+    /* Header section */
+    #contact-modal .modal-content .header {
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        color: var(--dark-blue);
+        margin-bottom: 15px;
+    }
 
-#contact-modal .modal-content .close:hover {
-    transform: scale(1.2);
-}
+    #contact-modal .modal-content .close:hover {
+        transform: scale(1.2);
+    }
 
-/* Contact info section */
-#contact-modal .contact-info-section {
-    margin-top: 20px; /* space below header */
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
+    /* Contact info section */
+    #contact-modal .contact-info-section {
+        margin-top: 20px;
+        /* space below header */
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 
     #photo-modal .modal-content {
         position: absolute;
@@ -269,10 +290,11 @@
         padding: 20px 20px 0;
         z-index: 10;
     }
-    
+
     #photo-modal .gallery-container {
         flex-grow: 1;
-        overflow-y: hidden; /* Prevent scrolling on the main container */
+        overflow-y: hidden;
+        /* Prevent scrolling on the main container */
         padding: 0 20px 20px;
     }
 
@@ -293,6 +315,7 @@
             width: 66.67%;
             height: 75vh;
         }
+
         #contact-modal .modal-content {
             width: 95%;
             padding: 15px;
@@ -305,7 +328,7 @@
     }
 
     .close-button {
-        color: #174C38;
+        color: var(--dark-blue);
         font-size: 28px;
         font-weight: bold;
         line-height: 1;
@@ -344,7 +367,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #A0BBA8;
+        background-color: var(--cream);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -369,34 +392,41 @@
     }
 
     @keyframes beat {
-        0%, 100% {
+
+        0%,
+        100% {
             transform: scale(1);
         }
+
         10% {
             transform: scale(1.1);
         }
+
         20% {
             transform: scale(1);
         }
+
         30% {
             transform: scale(1.1);
         }
+
         40% {
             transform: scale(1);
         }
+
         /* Rest of the time (40%-100%) stays at scale(1) */
     }
 
     /* Frosted glass contact box */
     .contact-box {
         --border-width: 1px;
-        background: rgba(160, 187, 168, 0.8);
+        background: var(--cream);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 6px var(--black-10), 0 1px 3px var(--black-8);
     }
 
-    .contact-box > * {
+    .contact-box>* {
         position: relative;
         z-index: 1;
     }
@@ -417,46 +447,30 @@
         mask-composite: subtract;
     }
 
-    /* Carousel Styles */
-    .container {
-        width: 100%;
-        max-width: 100%;
-        height: 100vh;
-        background: #f5f5f5;
-        border-radius: 0;
-        overflow: hidden;
-        position: relative;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        /* Prevent absolutely positioned children from extending document width */
-        contain: layout style;
-    }
-    
-    /* Ensure body background matches container on videos page to hide any gaps */
-    /* Override Tailwind background when container is present */
     body:has(.container) {
-        background-color: #f5f5f5 !important;
+        background-color: var(--off-white) !important;
         max-width: 100vw;
         overflow-x: clip;
     }
-    
+
     /* Ensure container covers full viewport */
     .container {
         min-width: 100%;
     }
-    
+
     .container .slide {
         border-radius: 0;
         width: 100%;
         height: 100%;
         position: relative;
-        overflow: hidden; /* Clip items that extend beyond container */
-        max-width: 100%; /* Prevent expansion */
+        overflow: hidden;
+        /* Clip items that extend beyond container */
+        max-width: 100%;
+        /* Prevent expansion */
         /* Ensure this container doesn't extend beyond parent */
         contain: layout;
     }
-    
+
     .container .slide .item {
         width: 200px;
         height: 250px;
@@ -469,17 +483,17 @@
         display: inline-block;
         transition: all 0.5s;
     }
-    
+
     /* Hover effect for clickable preview items (items 3+) */
     .slide .item:nth-child(n + 3) {
         transition: all 0.5s, transform 0.2s ease;
     }
-    
+
     .slide .item:nth-child(n + 3):hover {
         transform: translate(0, -50%) scale(1.05);
         z-index: 10;
     }
-    
+
     .slide .item:nth-child(1),
     .slide .item:nth-child(2) {
         top: 0;
@@ -490,40 +504,40 @@
         height: 100%;
         transition: all .5s;
     }
-    
+
     .slide .item:nth-child(3) {
         left: 75%;
     }
-    
+
     .slide .item:nth-child(4) {
         left: calc(75% + 220px);
     }
-    
+
     .slide .item:nth-child(5) {
         left: calc(75% + 440px);
     }
-    
+
     .slide .item:nth-child(n + 6) {
         left: calc(75% + 660px);
         opacity: 0;
     }
-    
+
     .item .content {
         position: absolute;
         top: 50%;
         left: 100px;
         width: 300px;
         text-align: left;
-        color: #eee;
+        color: var(--light-grey);
         transform: translate(0, -50%);
         font-family: system-ui;
         display: none;
     }
-    
+
     .slide .item:nth-child(2) .content {
         display: block;
     }
-    
+
     .content .name {
         font-family: 'Superior Title', serif;
         font-size: 40px;
@@ -531,7 +545,7 @@
         opacity: 0;
         animation: animate 1s ease-in-out 1 forwards;
     }
-    
+
     .content .des {
         font-family: 'Dashiell Text', sans-serif;
         margin-top: 10px;
@@ -539,7 +553,7 @@
         opacity: 0;
         animation: animate 1s ease-in-out 0.3s 1 forwards;
     }
-    
+
     .content button {
         font-family: 'Dashiell Text', sans-serif;
         padding: 10px 20px;
@@ -547,28 +561,29 @@
         cursor: pointer;
         opacity: 0;
         border-radius: 10px;
-        background-color: #174C38;
+        background-color: var(--dark-blue);
         transition: all 0.5s;
         animation: animate 1s ease-in-out 0.6s 1 forwards;
     }
-    
+
     .content button:hover {
-        background-color: #A0BBA8;
+        background-color: var(--cream);
     }
-    
+
     @keyframes animate {
         from {
             opacity: 0;
             transform: translate(0, 100px);
             filter: blur(33px);
         }
+
         to {
             opacity: 1;
             transform: translate(0);
             filter: blur(0);
         }
     }
-    
+
     .button {
         display: flex;
         flex-direction: row;
@@ -581,7 +596,7 @@
         position: absolute;
         bottom: 20px;
     }
-    
+
     .button button {
         width: 40px;
         height: 35px;
@@ -590,38 +605,39 @@
         cursor: pointer;
         margin: 0 5px;
         transition: all 0.3s ease;
-        transform: scale(1); /* Explicit base scale */
+        transform: scale(1);
+        /* Explicit base scale */
         /* Frosted glass effect matching navbar */
-        background: rgba(160, 187, 168, 0.8);
+        background: var(--cream);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        color: #174C38;
-        border: 1px solid rgba(23, 76, 56, 0.3);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+        color: var(--dark-blue);
+        border: 1px solid var(--green-30);
+        box-shadow: 0 4px 6px var(--black-10), 0 1px 3px var(--black-8);
     }
-    
+
     .button button:hover {
-        background: rgba(160, 187, 168, 0.9);
+        background: var(--cream);
         transform: scale(1.1);
-        border-color: rgba(23, 76, 56, 0.5);
+        border-color: var(--green-50);
     }
-    
+
     .button button:focus {
         transform: scale(1.1);
-        background: rgba(160, 187, 168, 0.9);
-        border-color: rgba(23, 76, 56, 0.5);
+        background: var(--cream);
+        border-color: var(--green-50);
         outline: none;
     }
-    
+
     .button button:active {
         transform: scale(1.02);
-        background: rgba(160, 187, 168, 0.95);
+        background: var(--cream);
     }
-    
+
     .button button:not(:hover):not(:focus):not(:active) {
         transform: scale(1);
     }
-    
+
     .next,
     .prev {
         font-weight: normal;
@@ -632,11 +648,11 @@
         align-items: center;
         justify-content: center;
     }
-    
+
     .next {
         padding: 0 0 0 3px;
     }
-    
+
     .prev {
         padding: 0 3px 0 0;
     }
@@ -656,13 +672,14 @@
     #video-modal.active .modal-content {
         transform: translate(-50%, -50%);
     }
-    
+
     .video-container {
         position: relative;
         width: 100%;
-        padding-top: 56.25%; /* 16:9 aspect ratio */
+        padding-top: 56.25%;
+        /* 16:9 aspect ratio */
     }
-    
+
     .video-container video {
         position: absolute;
         top: 0;

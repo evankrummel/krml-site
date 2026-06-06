@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#A0BBA8" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#174C38" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#242c3d" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#242c3d" media="(prefers-color-scheme: dark)">
   <title>Evan Krummel</title>
 
   <link rel="canonical" href="https://www.evankrummel.com/">
@@ -18,10 +18,22 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-blue': '#242c3d',
+            'cream': '#e9e1db'
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
 <body
-  class="bg-[#A0BBA8] dark:bg-[#174C38] text-[#174C38] dark:text-[#174C38] flex flex-col items-center justify-center h-screen">
+  class="bg-dark-blue dark:bg-dark-blue text-dark-blue dark:text-dark-blue flex flex-col items-center justify-center h-screen">
 
   <!-- Preloader -->
   <div id="preloader" class="preloader">
@@ -37,10 +49,10 @@
 
     <!-- Hero Text -->
     <div class="text-center">
-      <h1 class="h1-text text-5xl md:text-7xl lg:text-8xl font-bold mb-4 text-[#A0BBA8]">
+      <h1 class="h1-text text-5xl md:text-7xl lg:text-8xl font-bold mb-4 text-cream">
         Pardon the mess...
       </h1>
-      <p class="text-lg md:text-xl lg:text-2xl font-medium px-4 dashiell-text max-w-lg mx-auto text-[#A0BBA8]">
+      <p class="text-lg md:text-xl lg:text-2xl font-medium px-4 dashiell-text max-w-lg mx-auto text-cream">
         I'm working on building a new site, so things are a bit unkempt as they stand.
       </p>
     </div>
@@ -50,17 +62,17 @@
                            shadow-lg transition-all duration-300">
       <div class="flex items-center justify-between">
         <!-- Wordmark -->
-        <img id="wordmark-logo" src="./images/krml25-wordmark.png" alt="Logo" class="h-8">
+        <img id="wordmark-logo" src="./images/krml25-wordmark-cream.svg" alt="Logo" class="h-8">
 
         <!-- Links -->
         <div id="nav-links-container" class="relative flex items-center space-x-3 z-10 dashiell-text">
-          <span id="hover-pill" class="absolute h-8 rounded-full bg-[#174C38] transition-all duration-300 -z-10"></span>
+          <span id="hover-pill" class="absolute h-8 rounded-full bg-dark-blue transition-all duration-300 -z-10"></span>
           <a href="/photo" id="photo-link" class="nav-link text-sm md:text-base px-2 py-2 my-[-0.5rem]"
-            data-default-color="#174C38">photo</a>
+            data-default-color="var(--dark-blue)">photo</a>
           <a href="/video" id="video-link" class="nav-link text-sm md:text-base px-2 py-2 my-[-0.5rem]"
-            data-default-color="#174C38">video</a>
+            data-default-color="var(--dark-blue)">video</a>
           <a href="#contact-modal" id="contact-link" class="nav-link text-sm md:text-base px-2 py-1"
-            data-default-color="#E9E1DB">contact</a>
+            data-default-color="var(--cream)">contact</a>
         </div>
       </div>
     </nav>
@@ -81,11 +93,11 @@
 
   <!-- Contact Modal -->
   <div id="contact-modal" class="modal">
-    <div class="modal-content text-[#174C38] dashiell-text
+    <div class="modal-content text-dark-blue dashiell-text
               w-[90%] max-w-md h-[360px] py-4 px-6 flex flex-col items-center rounded-xl">
       <!-- Header (stays at the top of the box) -->
       <div class="w-full flex justify-between items-start mb-2">
-        <h2 class="h1-text text-2xl font-bold text-[#174C38]">Let's talk.</h2>
+        <h2 class="h1-text text-2xl font-bold text-dark-blue">Let's talk.</h2>
         <span class="close-button" data-modal="contact-modal">&times;</span>
       </div>
 
@@ -95,10 +107,10 @@
         <img src="./images/circle-contact.png" alt="Evan Krummel" class="w-28 h-28 object-cover rounded-lg">
 
         <!-- Name -->
-        <h3 class="h1-text text-3xl font-bold text-[#174C38]">Evan Krummel</h3>
+        <h3 class="h1-text text-3xl font-bold text-dark-blue">Evan Krummel</h3>
 
         <!-- Subheading -->
-        <p class="text-xl font-medium text-[#174C38]">Student & Creative Professional</p>
+        <p class="text-xl font-medium text-dark-blue">Student & Creative Professional</p>
 
         <!-- Social Icons -->
         <div class="flex space-x-4 mt-2">

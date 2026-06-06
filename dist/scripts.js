@@ -1,4 +1,7 @@
-    
+// Color Constants
+const COLOR_CREAM = '#E9E1DB';
+const COLOR_DARK_BLUE = '#242c3d';
+
 // Preloader functionality
 function hidePreloader() {
     const preloader = document.getElementById('preloader');
@@ -69,9 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateLinkColors = (activeLink) => {
         links.forEach(link => {
             if (link === activeLink) {
-                link.style.color = '#E9E1DB';
+                link.style.color = COLOR_CREAM;
             } else {
-                link.style.color = '#174C38';
+                link.style.color = COLOR_DARK_BLUE;
             }
         });
     };

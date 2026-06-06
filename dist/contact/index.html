@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#A0BBA8" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#174C38" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#242c3d" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#242c3d" media="(prefers-color-scheme: dark)">
   <title>Evan Krummel</title>
 
   <link rel="canonical" href="https://www.evankrummel.com/">
@@ -21,10 +21,22 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-blue': '#242c3d',
+            'cream': '#e9e1db'
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
 <body
-  class="bg-[#242c3d] dark:bg-[#242c3d] text-[#174C38] dark:text-[#174C38] flex flex-col items-center justify-center h-screen">
+  class="bg-dark-blue dark:bg-dark-blue text-dark-blue dark:text-dark-blue flex flex-col items-center justify-center h-screen">
 
   <!-- Preloader -->
   <div id="preloader" class="preloader">
@@ -57,13 +69,12 @@
 
         <!-- Content Layer -->
         <div
-          class="text-[#242c3d] dashiell-text w-full h-full py-4 px-6 flex flex-col items-center justify-center space-y-3 text-center relative z-10">
+          class="text-dark-blue dashiell-text w-full h-full py-4 px-6 flex flex-col items-center justify-center space-y-3 text-center relative z-10">
           <img src="../images/circle-contact.png" alt="Evan Krummel" class="w-28 h-28 object-cover rounded-lg">
+          
+          <h3 class="h1-text text-3xl font-bold text-dark-blue">Evan Krummel</h3>
 
-          <h3 class="h1-text text-3xl font-bold text-[#242c3d]">Evan Krummel</h3>
-
-          <!-- Subheading -->
-          <p class="text-xl font-medium text-[#242c3d]">Student & Creative Professional</p>
+          <p class="text-xl font-medium text-dark-blue">Student & Creative Professional</p>
         </div>
       </div>
     </div>
