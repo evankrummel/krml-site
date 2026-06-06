@@ -16,6 +16,9 @@
   <!-- Dark mode favicon -->
   <link rel="icon" type="image/png" href="./images/favicon-dark.png" media="(prefers-color-scheme: dark)">
 
+  <!-- Preload foreground image for instant rendering with the preloader -->
+  <link rel="preload" as="image" href="./images/foreground.png">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
   <script>
@@ -47,8 +50,11 @@
     <div class="background-image absolute inset-0 -z-10"></div>
     <div class="absolute inset-0 -z-10 bg-black opacity-10"></div>
 
+    <!-- Foreground Image Layer -->
+    <div class="foreground-image absolute inset-0 z-5 pointer-events-none will-change-transform"></div>
+
     <!-- Hero Text -->
-    <div class="text-center">
+    <div class="text-center relative z-10">
       <h1 class="h1-text text-5xl md:text-6xl lg:text-8xl font-bold mb-4 text-cream">
         Hey, I'm Evan.
       </h1>
