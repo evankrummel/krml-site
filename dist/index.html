@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#A0BBA8] dark:bg-[#174C38] text-[#174C38] dark:text-[#174C38] flex flex-col items-center justify-center h-screen">
+
+<body
+  class="bg-[#A0BBA8] dark:bg-[#174C38] text-[#174C38] dark:text-[#174C38] flex flex-col items-center justify-center h-screen">
 
   <!-- Preloader -->
   <div id="preloader" class="preloader">
@@ -27,7 +30,7 @@
 
   <!-- Main Content Wrapper -->
   <div id="main-content" class="h-full w-full flex flex-col items-center justify-center transition-all duration-500">
-    
+
     <!-- Background -->
     <div class="background-image absolute inset-0 -z-10"></div>
     <div class="absolute inset-0 -z-10 bg-black opacity-10"></div>
@@ -52,64 +55,68 @@
         <!-- Links -->
         <div id="nav-links-container" class="relative flex items-center space-x-3 z-10 dashiell-text">
           <span id="hover-pill" class="absolute h-8 rounded-full bg-[#174C38] transition-all duration-300 -z-10"></span>
-          <a href="/photos" id="photo-link" class="nav-link text-sm md:text-base px-2 py-2 my-[-0.5rem]" data-default-color="#174C38">photo</a>
-          <a href="/videos" id="video-link" class="nav-link text-sm md:text-base px-2 py-2 my-[-0.5rem]" data-default-color="#174C38">video</a>
-          <a href="#contact-modal" id="contact-link" class="nav-link text-sm md:text-base px-2 py-1" data-default-color="#E9E1DB">contact</a>
+          <a href="/photo" id="photo-link" class="nav-link text-sm md:text-base px-2 py-2 my-[-0.5rem]"
+            data-default-color="#174C38">photo</a>
+          <a href="/video" id="video-link" class="nav-link text-sm md:text-base px-2 py-2 my-[-0.5rem]"
+            data-default-color="#174C38">video</a>
+          <a href="#contact-modal" id="contact-link" class="nav-link text-sm md:text-base px-2 py-1"
+            data-default-color="#E9E1DB">contact</a>
         </div>
       </div>
     </nav>
 
     <!-- Social Links -->
     <div class="fixed bottom-8 flex space-x-4">
-      <a href="mailto:evan@krml.me?subject=%F0%9F%91%8B" target="_blank" class="w-7 h-7">
+      <a href="mailto:evan@krml.me?subject=%F0%9F%91%8B" target="_blank" class="social-link w-7 h-7">
         <img src="./images/mail-alt.png" alt="Mail Icon" class="w-full h-full">
       </a>
-      <a href="http://instagram.com/evankrummel/" target="_blank" class="w-7 h-7">
+      <a href="http://instagram.com/evankrummel/" target="_blank" class="social-link w-7 h-7">
         <img src="./images/insta-alt.png" alt="Instagram Icon" class="w-full h-full">
       </a>
-      <a href="https://www.linkedin.com/in/krml" target="_blank" class="w-7 h-7">
+      <a href="https://www.linkedin.com/in/krml" target="_blank" class="social-link w-7 h-7">
         <img src="./images/linkedin-alt.png" alt="LinkedIn Icon" class="w-full h-full">
       </a>
     </div>
   </div>
 
-<!-- Contact Modal -->
-<div id="contact-modal" class="modal">
-  <div class="modal-content text-[#174C38] dashiell-text
+  <!-- Contact Modal -->
+  <div id="contact-modal" class="modal">
+    <div class="modal-content text-[#174C38] dashiell-text
               w-[90%] max-w-md h-[360px] py-4 px-6 flex flex-col items-center rounded-xl">
-    <!-- Header (stays at the top of the box) -->
-    <div class="w-full flex justify-between items-start mb-2">
-      <h2 class="h1-text text-2xl font-bold text-[#174C38]">Let's talk.</h2>
-      <span class="close-button" data-modal="contact-modal">&times;</span>
-    </div>
+      <!-- Header (stays at the top of the box) -->
+      <div class="w-full flex justify-between items-start mb-2">
+        <h2 class="h1-text text-2xl font-bold text-[#174C38]">Let's talk.</h2>
+        <span class="close-button" data-modal="contact-modal">&times;</span>
+      </div>
 
-    <!-- Body: occupies remaining space and centers its contents -->
-    <div class="flex-1 w-full flex flex-col items-center justify-center space-y-3 text-center">
-      <!-- Photo -->
-      <img src="./images/circle-contact.png" alt="Evan Krummel" class="w-28 h-28 object-cover rounded-lg">
+      <!-- Body: occupies remaining space and centers its contents -->
+      <div class="flex-1 w-full flex flex-col items-center justify-center space-y-3 text-center">
+        <!-- Photo -->
+        <img src="./images/circle-contact.png" alt="Evan Krummel" class="w-28 h-28 object-cover rounded-lg">
 
-      <!-- Name -->
-      <h3 class="h1-text text-3xl font-bold text-[#174C38]">Evan Krummel</h3>
+        <!-- Name -->
+        <h3 class="h1-text text-3xl font-bold text-[#174C38]">Evan Krummel</h3>
 
-      <!-- Subheading -->
-      <p class="text-xl font-medium text-[#174C38]">Student & Creative Professional</p>
+        <!-- Subheading -->
+        <p class="text-xl font-medium text-[#174C38]">Student & Creative Professional</p>
 
-      <!-- Social Icons -->
-      <div class="flex space-x-4 mt-2">
-        <a href="mailto:evan@krml.me?subject=%F0%9F%91%8B" target="_blank" class="w-7 h-7">
-          <img src="./images/mail-base.png" alt="Mail Icon" class="w-full h-full">
-        </a>
-        <a href="http://instagram.com/evankrummel/" target="_blank" class="w-7 h-7">
-          <img src="./images/insta-base.png" alt="Instagram Icon" class="w-full h-full">
-        </a>
-        <a href="https://www.linkedin.com/in/krml" target="_blank" class="w-7 h-7">
-          <img src="./images/linkedin-base.png" alt="LinkedIn Icon" class="w-full h-full">
-        </a>
+        <!-- Social Icons -->
+        <div class="flex space-x-4 mt-2">
+          <a href="mailto:evan@krml.me?subject=%F0%9F%91%8B" target="_blank" class="social-link w-7 h-7">
+            <img src="./images/mail-base.png" alt="Mail Icon" class="w-full h-full">
+          </a>
+          <a href="http://instagram.com/evankrummel/" target="_blank" class="social-link w-7 h-7">
+            <img src="./images/insta-base.png" alt="Instagram Icon" class="w-full h-full">
+          </a>
+          <a href="https://www.linkedin.com/in/krml" target="_blank" class="social-link w-7 h-7">
+            <img src="./images/linkedin-base.png" alt="LinkedIn Icon" class="w-full h-full">
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <script src="scripts.js"></script>
 </body>
+
 </html>

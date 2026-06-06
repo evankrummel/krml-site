@@ -162,3 +162,22 @@
         -webkit-mask-composite: subtract;
         mask-composite: subtract;
     }
+
+    /* Hover animations for logo and social icons */
+    .logo-link {
+        display: inline-block;
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+    }
+
+    .logo-link:hover {
+        transform: scale(1.03);
+    }
+
+    .social-link {
+        display: inline-block;
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+    }
+
+    .social-link:hover {
+        transform: scale(1.08);
+    }
