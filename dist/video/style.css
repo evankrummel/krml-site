@@ -86,7 +86,7 @@
 
     /* The CSS for your background image */
     .background-image {
-        background-image: url('./images/background.jpeg');
+        background-image: url('../images/background.jpeg');
         background-size: cover;
         background-position: center;
         width: 110%;
@@ -678,7 +678,7 @@
         transform: scale(1.08);
     }
 .foreground-image {
-    background-image: url('./images/foreground.png'); 
+    background-image: url('../images/foreground.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
