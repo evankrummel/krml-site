@@ -43,7 +43,7 @@
     }
     
     /* Fixed body for index page only */
-    body:has(#main-content.h-screen) {
+    body.h-screen {
         position: fixed;
         width: 100%;
         height: 100%;
