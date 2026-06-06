@@ -1,0 +1,134 @@
+    @font-face {
+        font-family: 'Dashiell Text';
+        src: url('/fonts/DashiellText-Medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Superior Title';
+        src: url('/fonts/SuperiorTitle-Bold.otf') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    html {
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Dashiell Text', sans-serif;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+    }
+    
+    body:has(#main-content.h-screen) {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    #main-content {
+        overflow: hidden;
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        position: relative;
+        /* Prevent children from extending beyond */
+        contain: layout;
+    }
+
+    .h1-text {
+        font-family: 'Superior Title', serif;
+    }
+    
+.background-image {
+    background-image: url('../images/background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+.foreground-image {
+    background-image: url('../images/foreground.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+    .pill-button {
+        border-radius: 9999px;
+        padding: 0.25rem 1rem;
+        font-weight: 500;
+    }
+
+    .nav-link {
+        transition: color 0.3s ease;
+    }
+
+/* Preloader */
+    .preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #242c3d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        transition: opacity 0.6s ease-out, visibility 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: scale(1.1);
+    }
+
+    .preloader-logo {
+        width: 200px;
+        height: auto;
+        animation: beat 3s ease-in-out infinite;
+    }
+
+    @keyframes beat {
+        0%, 100% {
+            transform: scale(1);
+        }
+        10% {
+            transform: scale(1.1);
+        }
+        20% {
+            transform: scale(1);
+        }
+        30% {
+            transform: scale(1.1);
+        }
+        40% {
+            transform: scale(1);
+        }
+        /* Rest of the time (40%-100%) stays at scale(1) */
+    }
