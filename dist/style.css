@@ -693,3 +693,35 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+/* Markdown Content Styling */
+.markdown-content h3 {
+    font-family: 'Superior Title', serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: var(--cream);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.markdown-content img {
+    width: 100%;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--cream-alpha);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    object-fit: cover;
+    max-height: 500px;
+}
+
+.markdown-content iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--cream-alpha);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
