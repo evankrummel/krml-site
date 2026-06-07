@@ -671,8 +671,8 @@ async function loadProjects() {
 
         let listHtml = `
             <div class="w-full rounded-2xl bg-dark-blue/40 backdrop-blur-md border border-cream/10 px-6 py-4 flex items-center justify-between flex-shrink-0 shadow-inner">
-                <h2 class="h1-text text-3xl text-cream drop-shadow-md">Projects</h2>
-                <div class="font-mono text-xs text-cream/50 mt-1">${projectsRaw.length} Total</div>
+                <h2 class="h1-text text-3xl text-cream drop-shadow-md">Videography</h2>
+                <div class="font-mono text-xs text-cream/50 mt-1">${projectsRaw.length} Projects</div>
             </div>
         `;
         window.videoProjectsData = []; // clear if called multiple times
