@@ -34,8 +34,8 @@ Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil 
 
 ---
 
-# Project 3
-**Date:** 2024.08.05
+# The Meet & Greet
+**Date:** 2024.08.05 | P-JH1
 **Thumbnail:** images/test-image.jpg
 **ID:** project-3
 **Description:** A short documentary about historical preservation in the modern age.
@@ -48,11 +48,11 @@ Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dic
 
 ---
 
-# Project 4
-**Date:** 2024.07.18
+# Why the Touch Bar Failed
+**Date:** 2024.07.18 | Y-TBI
 **Thumbnail:** images/test-image.jpg
 **ID:** project-4
-**Description:** High-speed cinematography showcasing the beauty of movement.
+**Description:** (and how to improve it)
 
 High-speed cinematography showcasing the beauty of movement. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
 
@@ -76,7 +76,7 @@ Deep ocean exploration and underwater videography. At vero eos et accusamus et i
 
 ---
 
-# Project 6
+# Midnights
 **Date:** 2024.05.10
 **Thumbnail:** images/test-image.jpg
 **ID:** project-6
@@ -88,7 +88,7 @@ Deep ocean exploration and underwater videography. At vero eos et accusamus et i
 
 ---
 
-# Project 7
+# One Perfect Day
 **Date:** 2024.05.10
 **Thumbnail:** images/test-image.jpg
 **ID:** project-7
@@ -100,7 +100,19 @@ Deep ocean exploration and underwater videography. At vero eos et accusamus et i
 
 ---
 
-# Project 8
+# Flower Power
+**Date:** 2024.05.10
+**Thumbnail:** images/test-image.jpg
+**ID:** project-7
+**Description:** Deep ocean exploration and underwater videography.
+
+Deep ocean exploration and underwater videography. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.
+
+![Article Image](images/test-image.jpg)
+
+---
+
+# Culinary Karma
 **Date:** 2024.05.10
 **Thumbnail:** images/test-image.jpg
 **ID:** project-8
