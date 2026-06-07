@@ -15,12 +15,17 @@
     "redirects": [
       {
         "source": "/l",
-        "destination": "/lost",
+        "destination": "/contact",
         "type": 301
       },
       {
         "source": "/found",
-        "destination": "/lost",
+        "destination": "/contact",
+        "type": 301
+      },
+      {
+        "source": "/lost",
+        "destination": "/contact",
         "type": 301
       },
       {
