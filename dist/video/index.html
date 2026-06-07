@@ -74,7 +74,225 @@
       </div>
     </nav>
 
-    <!-- Content (removed per user request) -->
+    <!-- Main Content Split Layout -->
+    <div id="video-split-layout" class="absolute inset-0 pt-28 px-4 md:px-8 pb-8 flex flex-col md:flex-row gap-6 z-10 pointer-events-none">
+      
+      <!-- Left Panel: Project List -->
+      <div id="project-list" class="w-full md:w-1/3 flex flex-col gap-5 overflow-y-auto pb-24 md:pb-0 h-full hide-scrollbar pointer-events-auto">
+        
+        <!-- Project Item 1 -->
+        <button class="project-item group w-full text-left relative overflow-hidden rounded-2xl bg-cream/10 backdrop-blur-md border border-cream/20 shadow-lg hover:bg-cream/20 transition-all duration-300 flex items-stretch p-4 flex-shrink-0 min-h-[140px] md:min-h-[160px]" onclick="showArticle('article-1')">
+          <div class="flex flex-col justify-center w-2/3 pr-4 z-10 py-2">
+            <div>
+              <h2 class="h1-text text-2xl md:text-3xl text-cream font-bold leading-tight drop-shadow-md">Project Alpha</h2>
+              <p class="dashiell-text text-sm md:text-base text-cream/90 mt-2 line-clamp-2 drop-shadow-sm">A fascinating exploration of visual media and motion graphics.</p>
+            </div>
+            <div class="font-mono text-xs text-cream/70 mt-4">2024.10.15</div>
+          </div>
+          <div class="w-1/3 relative z-10 rounded-xl overflow-hidden border border-cream/20 shadow-inner">
+            <img src="images/test-image.jpg" alt="Thumbnail" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+        </button>
+
+        <!-- Project Item 2 -->
+        <button class="project-item group w-full text-left relative overflow-hidden rounded-2xl bg-cream/10 backdrop-blur-md border border-cream/20 shadow-lg hover:bg-cream/20 transition-all duration-300 flex items-stretch p-4 flex-shrink-0 min-h-[140px] md:min-h-[160px]" onclick="showArticle('article-2')">
+          <div class="flex flex-col justify-center w-2/3 pr-4 z-10 py-2">
+            <div>
+              <h2 class="h1-text text-2xl md:text-3xl text-cream font-bold leading-tight drop-shadow-md">Neon Nights</h2>
+              <p class="dashiell-text text-sm md:text-base text-cream/90 mt-2 line-clamp-2 drop-shadow-sm">Urban exploration through the lens of cyberpunk aesthetics.</p>
+            </div>
+            <div class="font-mono text-xs text-cream/70 mt-4">2024.09.22</div>
+          </div>
+          <div class="w-1/3 relative z-10 rounded-xl overflow-hidden border border-cream/20 shadow-inner">
+            <img src="images/test-image.jpg" alt="Thumbnail" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+        </button>
+
+        <!-- Project Item 3 -->
+        <button class="project-item group w-full text-left relative overflow-hidden rounded-2xl bg-cream/10 backdrop-blur-md border border-cream/20 shadow-lg hover:bg-cream/20 transition-all duration-300 flex items-stretch p-4 flex-shrink-0 min-h-[140px] md:min-h-[160px]" onclick="showArticle('article-3')">
+          <div class="flex flex-col justify-center w-2/3 pr-4 z-10 py-2">
+            <div>
+              <h2 class="h1-text text-2xl md:text-3xl text-cream font-bold leading-tight drop-shadow-md">Echoes of Time</h2>
+              <p class="dashiell-text text-sm md:text-base text-cream/90 mt-2 line-clamp-2 drop-shadow-sm">A short documentary about historical preservation in the modern age.</p>
+            </div>
+            <div class="font-mono text-xs text-cream/70 mt-4">2024.08.05</div>
+          </div>
+          <div class="w-1/3 relative z-10 rounded-xl overflow-hidden border border-cream/20 shadow-inner">
+            <img src="images/test-image.jpg" alt="Thumbnail" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+        </button>
+        
+        <!-- Project Item 4 -->
+        <button class="project-item group w-full text-left relative overflow-hidden rounded-2xl bg-cream/10 backdrop-blur-md border border-cream/20 shadow-lg hover:bg-cream/20 transition-all duration-300 flex items-stretch p-4 flex-shrink-0 min-h-[140px] md:min-h-[160px]" onclick="showArticle('article-4')">
+          <div class="flex flex-col justify-center w-2/3 pr-4 z-10 py-2">
+            <div>
+              <h2 class="h1-text text-2xl md:text-3xl text-cream font-bold leading-tight drop-shadow-md">Velocity</h2>
+              <p class="dashiell-text text-sm md:text-base text-cream/90 mt-2 line-clamp-2 drop-shadow-sm">High-speed cinematography showcasing the beauty of movement.</p>
+            </div>
+            <div class="font-mono text-xs text-cream/70 mt-4">2024.07.18</div>
+          </div>
+          <div class="w-1/3 relative z-10 rounded-xl overflow-hidden border border-cream/20 shadow-inner">
+            <img src="images/test-image.jpg" alt="Thumbnail" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+        </button>
+
+        <!-- Project Item 5 -->
+        <button class="project-item group w-full text-left relative overflow-hidden rounded-2xl bg-cream/10 backdrop-blur-md border border-cream/20 shadow-lg hover:bg-cream/20 transition-all duration-300 flex items-stretch p-4 flex-shrink-0 min-h-[140px] md:min-h-[160px]" onclick="showArticle('article-5')">
+          <div class="flex flex-col justify-center w-2/3 pr-4 z-10 py-2">
+            <div>
+              <h2 class="h1-text text-2xl md:text-3xl text-cream font-bold leading-tight drop-shadow-md">Silent Seas</h2>
+              <p class="dashiell-text text-sm md:text-base text-cream/90 mt-2 line-clamp-2 drop-shadow-sm">Deep ocean exploration and underwater videography.</p>
+            </div>
+            <div class="font-mono text-xs text-cream/70 mt-4">2024.05.10</div>
+          </div>
+          <div class="w-1/3 relative z-10 rounded-xl overflow-hidden border border-cream/20 shadow-inner">
+            <img src="images/test-image.jpg" alt="Thumbnail" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+        </button>
+
+      </div>
+
+      <!-- Right Panel: Article Container -->
+      <div id="project-article-container" class="hidden md:block w-full md:w-2/3 h-full relative pointer-events-auto">
+        
+        <!-- Mobile Back Button (Outside backdrop-blur to avoid fixed context issues) -->
+        <button id="mobile-back-btn" onclick="goBackToProjects()" class="hidden md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 pill-button bg-cream/90 text-dark-blue border border-cream shadow-2xl backdrop-blur-md px-8 py-3 items-center gap-2 z-[100] font-bold transition-transform hover:scale-105 active:scale-95 whitespace-nowrap">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+          Back to Projects
+        </button>
+
+        <div class="bg-cream/10 backdrop-blur-xl rounded-2xl border border-cream/20 p-6 md:p-10 overflow-y-auto h-full hide-scrollbar shadow-2xl">
+          
+          <!-- Article 1 -->
+          <article id="article-1" class="project-content pb-24 md:pb-0">
+            <h1 class="h1-text text-4xl md:text-5xl lg:text-6xl text-cream mb-4 md:mb-6 drop-shadow-md">Project Alpha</h1>
+            <div class="font-mono text-sm text-cream/70 mb-8 border-b border-cream/20 pb-4">Published: 2024.10.15</div>
+            
+            <div class="dashiell-text text-cream/90 space-y-6 text-lg leading-relaxed">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              
+              <img src="images/test-image.jpg" alt="Article Image" class="w-full rounded-xl shadow-lg border border-cream/10 my-8 object-cover max-h-[500px]">
+              
+              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              
+              <h3 class="h1-text text-2xl text-cream mt-8 mb-4">The Process</h3>
+              <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article id="article-2" class="project-content hidden pb-24 md:pb-0">
+            <h1 class="h1-text text-4xl md:text-5xl lg:text-6xl text-cream mb-4 md:mb-6 drop-shadow-md">Neon Nights</h1>
+            <div class="font-mono text-sm text-cream/70 mb-8 border-b border-cream/20 pb-4">Published: 2024.09.22</div>
+            
+            <div class="dashiell-text text-cream/90 space-y-6 text-lg leading-relaxed">
+              <p>Urban exploration through the lens of cyberpunk aesthetics. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+              
+              <img src="images/test-image.jpg" alt="Article Image" class="w-full rounded-xl shadow-lg border border-cream/10 my-8 object-cover max-h-[500px]">
+              
+              <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article id="article-3" class="project-content hidden pb-24 md:pb-0">
+            <h1 class="h1-text text-4xl md:text-5xl lg:text-6xl text-cream mb-4 md:mb-6 drop-shadow-md">Echoes of Time</h1>
+            <div class="font-mono text-sm text-cream/70 mb-8 border-b border-cream/20 pb-4">Published: 2024.08.05</div>
+            
+            <div class="dashiell-text text-cream/90 space-y-6 text-lg leading-relaxed">
+              <p>A short documentary about historical preservation in the modern age. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+              
+              <img src="images/test-image.jpg" alt="Article Image" class="w-full rounded-xl shadow-lg border border-cream/10 my-8 object-cover max-h-[500px]">
+              
+              <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+            </div>
+          </article>
+
+          <!-- Article 4 -->
+          <article id="article-4" class="project-content hidden pb-24 md:pb-0">
+            <h1 class="h1-text text-4xl md:text-5xl lg:text-6xl text-cream mb-4 md:mb-6 drop-shadow-md">Velocity</h1>
+            <div class="font-mono text-sm text-cream/70 mb-8 border-b border-cream/20 pb-4">Published: 2024.07.18</div>
+            
+            <div class="dashiell-text text-cream/90 space-y-6 text-lg leading-relaxed">
+              <p>High-speed cinematography showcasing the beauty of movement. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?</p>
+              
+              <img src="images/test-image.jpg" alt="Article Image" class="w-full rounded-xl shadow-lg border border-cream/10 my-8 object-cover max-h-[500px]">
+            </div>
+          </article>
+
+          <!-- Article 5 -->
+          <article id="article-5" class="project-content hidden pb-24 md:pb-0">
+            <h1 class="h1-text text-4xl md:text-5xl lg:text-6xl text-cream mb-4 md:mb-6 drop-shadow-md">Silent Seas</h1>
+            <div class="font-mono text-sm text-cream/70 mb-8 border-b border-cream/20 pb-4">Published: 2024.05.10</div>
+            
+            <div class="dashiell-text text-cream/90 space-y-6 text-lg leading-relaxed">
+              <p>Deep ocean exploration and underwater videography. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.</p>
+              
+              <img src="images/test-image.jpg" alt="Article Image" class="w-full rounded-xl shadow-lg border border-cream/10 my-8 object-cover max-h-[500px]">
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile View Script -->
+    <script>
+      function showArticle(articleId) {
+        // Hide all articles
+        document.querySelectorAll('.project-content').forEach(el => {
+          el.classList.add('hidden');
+        });
+        
+        // Show target article
+        const target = document.getElementById(articleId);
+        if (target) {
+          target.classList.remove('hidden');
+          // Scroll container to top
+          target.parentElement.scrollTop = 0;
+        }
+
+        // Handle mobile toggle
+        if (window.innerWidth < 768) {
+          const list = document.getElementById('project-list');
+          const articleContainer = document.getElementById('project-article-container');
+          const backBtn = document.getElementById('mobile-back-btn');
+          
+          list.style.display = 'none';
+          articleContainer.style.display = 'block';
+          
+          backBtn.classList.remove('hidden');
+          backBtn.classList.add('flex');
+        }
+      }
+
+      function goBackToProjects() {
+        if (window.innerWidth < 768) {
+          const list = document.getElementById('project-list');
+          const articleContainer = document.getElementById('project-article-container');
+          const backBtn = document.getElementById('mobile-back-btn');
+          
+          list.style.display = 'flex';
+          articleContainer.style.display = 'none';
+          
+          backBtn.classList.add('hidden');
+          backBtn.classList.remove('flex');
+        }
+      }
+
+      window.addEventListener('resize', () => {
+        const list = document.getElementById('project-list');
+        const articleContainer = document.getElementById('project-article-container');
+        const backBtn = document.getElementById('mobile-back-btn');
+
+        if (window.innerWidth >= 768) {
+          list.style.display = '';
+          articleContainer.style.display = '';
+          backBtn.classList.add('hidden');
+          backBtn.classList.remove('flex');
+        }
+      });
+    </script>
   </div>
 
 
