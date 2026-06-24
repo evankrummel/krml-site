@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPage = pathSegments[pathSegments.length - 1] || 'index.html';
     let activePageLink = null;
     
-    // Check for /photo, /work, or /contact paths
-    if (pathname.includes('/photo') || currentPage === 'photo' || currentPage === 'photo.html' || currentPage === 'photos' || currentPage === 'photos.html') {
-        activePageLink = document.getElementById('photo-link');
+    // Check for /about, /work, or /contact paths
+    if (pathname.includes('/about') || currentPage === 'about' || currentPage === 'about.html') {
+        activePageLink = document.getElementById('about-link');
     } else if (pathname.includes('/work') || currentPage === 'work' || currentPage === 'work.html' || currentPage === 'works' || currentPage === 'works.html') {
         activePageLink = document.getElementById('work-link');
     } else if (pathname.includes('/contact') || currentPage === 'contact' || currentPage === 'contact.html') {

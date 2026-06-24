@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPage = pathSegments[pathSegments.length - 1] || 'index.html';
     let activePageLink = null;
 
-    // Check for /photo, /work, or /contact paths
-    if (pathname.includes('/photo') || currentPage === 'photo' || currentPage === 'photo.html' || currentPage === 'photos' || currentPage === 'photos.html') {
-        activePageLink = document.getElementById('photo-link');
+    // Check for /about, /work, or /contact paths
+    if (pathname.includes('/about') || currentPage === 'about' || currentPage === 'about.html') {
+        activePageLink = document.getElementById('about-link');
     } else if (pathname.includes('/work') || currentPage === 'work' || currentPage === 'work.html' || currentPage === 'works' || currentPage === 'works.html') {
         activePageLink = document.getElementById('work-link');
     } else if (pathname.includes('/contact') || currentPage === 'contact' || currentPage === 'contact.html') {
@@ -671,8 +671,8 @@ async function loadProjects() {
 
         let listHtml = `
             <div class="w-full rounded-2xl bg-dark-blue/40 backdrop-blur-md border border-cream/10 px-6 py-4 flex items-center justify-between flex-shrink-0 shadow-inner">
-                <h2 class="h1-text text-3xl text-cream drop-shadow-md">Projects/h2>
-                <div class="font-mono text-xs text-cream/50 mt-1">${projectsRaw.length} Pieces</div>
+                <h2 class="h1-text text-3xl text-cream drop-shadow-md">Projects</h2>
+                <div class="font-mono text-xs text-cream/50 mt-1">${projectsRaw.length} Items</div>
             </div>
         `;
         window.videoProjectsData = []; // clear if called multiple times
