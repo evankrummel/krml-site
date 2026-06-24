@@ -73,6 +73,15 @@
     background-repeat: no-repeat;
 }
 
+:root {
+    --dark-blue: #242c3d;
+    --cream: #e9e1db;
+    --cream-alpha: #e9e1db34;
+    --cream-alpha2: #e9e1db27;
+    --border-1: var(--cream-alpha2);
+    --border-2: var(--cream-alpha);
+}
+
     .pill-button {
         border-radius: 9999px;
         padding: 0.25rem 1rem;
@@ -80,7 +89,44 @@
     }
 
     .nav-link {
-        transition: color 0.3s ease;
+        transition: all 0.3s ease;
+        border-radius: 9999px;
+        color: var(--cream);
+    }
+
+    .nav-link:hover, .nav-link.active {
+        background-color: var(--cream);
+        color: var(--dark-blue) !important;
+    }
+
+    /* Frosted glass navbar */
+    #navbar {
+        --border-width: 1px;
+        border-radius: 9999px;
+        background: var(--cream-alpha2);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    #navbar > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    #navbar::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        border-radius: inherit;
+        border: var(--border-width) solid transparent;
+        background: linear-gradient(var(--border-1), var(--border-2)) border-box;
+        -webkit-mask: linear-gradient(black, black) border-box,
+            linear-gradient(black, black) padding-box;
+        mask: linear-gradient(black, black) border-box,
+            linear-gradient(black, black) padding-box;
+        -webkit-mask-composite: subtract;
+        mask-composite: subtract;
     }
 
 /* Preloader */

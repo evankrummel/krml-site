@@ -46,12 +46,19 @@
   <!-- Core Content -->
   <div id="main-content" class="h-full w-full flex flex-col items-center justify-center transition-all duration-500">
 
-    <!-- Header / Navbar -->
-    <header class="absolute top-8 left-0 right-0 z-10 flex justify-center px-6">
-      <a href="../index.html" class="logo-link hover:opacity-100">
-        <img src="../images/krml25-wordmark-cream.svg" alt="KRML" class="h-8 md:h-10 w-auto">
-      </a>
-    </header>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-8 left-1/2 -translate-x-1/2 w-auto px-4 py-2.5 
+                           shadow-lg transition-all duration-300 z-50 flex items-center">
+      <div id="nav-links-container" class="relative flex items-center justify-between gap-x-24 md:gap-x-32 z-10 dashiell-text h-full">
+        <a href="../work" id="work-link" class="nav-link text-sm md:text-base px-4 py-1.5 pt-2 leading-none flex items-center">projects</a>
+
+        <a href="../" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center hover:scale-[1.03] transition-transform duration-300">
+          <img id="wordmark-logo" src="../images/krml25-wordmark-cream.svg" alt="Logo" class="h-6 md:h-8 w-auto object-contain">
+        </a>
+
+        <a href="javascript:void(0);" id="contact-link" class="nav-link active cursor-default text-sm md:text-base px-4 py-1.5 pt-2 leading-none flex items-center tracking-[0.03em]">contact</a>
+      </div>
+    </nav>
 
     <!-- Background -->
     <div class="background-image absolute inset-0 -z-30 will-change-transform"></div>

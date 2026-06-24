@@ -44,102 +44,6 @@ if (document.readyState === 'complete') {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('nav-links-container');
-    const pill = document.getElementById('hover-pill');
-    const links = document.querySelectorAll('.nav-link');
-    const wordmark = document.getElementById('wordmark-logo');
-
-    let contactLink = null;
-    let activeModalLink = null;
-
-    links.forEach(link => {
-        if (link.textContent.toLowerCase() === 'contact') {
-            contactLink = link;
-        }
-    });
-
-    // Function to position the pill behind the active link
-    const positionPill = (link) => {
-        const linkRect = link.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
-        const relativeLeft = linkRect.left - containerRect.left;
-
-        pill.style.width = `${linkRect.width + 16}px`;
-        pill.style.transform = `translateX(${relativeLeft - 8}px)`;
-    };
-
-    // Function to update the color of all links
-    const updateLinkColors = (activeLink) => {
-        links.forEach(link => {
-            if (link === activeLink) {
-                link.style.color = COLOR_DARK_BLUE;
-            } else {
-                link.style.color = COLOR_CREAM;
-            }
-        });
-    };
-
-    // Determine which page we're on and highlight the appropriate link
-    const pathname = window.location.pathname;
-    const pathSegments = pathname.split('/').filter(segment => segment);
-    const currentPage = pathSegments[pathSegments.length - 1] || 'index.html';
-    let activePageLink = null;
-
-    // Check for /about, /work, or /contact paths
-    if (pathname.includes('/about') || currentPage === 'about' || currentPage === 'about.html') {
-        activePageLink = document.getElementById('about-link');
-    } else if (pathname.includes('/work') || currentPage === 'work' || currentPage === 'work.html' || currentPage === 'works' || currentPage === 'works.html') {
-        activePageLink = document.getElementById('work-link');
-    } else if (pathname.includes('/contact') || currentPage === 'contact' || currentPage === 'contact.html') {
-        activePageLink = document.getElementById('contact-link');
-    }
-
-    // Set the initial position of the pill
-    if (activePageLink) {
-        positionPill(activePageLink);
-        updateLinkColors(activePageLink);
-    } else if (contactLink) {
-        positionPill(contactLink);
-        updateLinkColors(contactLink);
-    }
-
-    // Use mouseenter and mouseleave for cleaner transitions
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            if (!activeModalLink) {
-                positionPill(link);
-                updateLinkColors(link);
-            }
-        });
-    });
-
-    container.addEventListener('mouseleave', () => {
-        if (!activeModalLink) {
-            if (activePageLink) {
-                positionPill(activePageLink);
-                updateLinkColors(activePageLink);
-            } else if (contactLink) {
-                positionPill(contactLink);
-                updateLinkColors(contactLink);
-            }
-        }
-    });
-
-    // Handle logo hover
-    if (wordmark) {
-        wordmark.addEventListener('mouseenter', () => {
-            if (!activeModalLink) {
-                if (activePageLink) {
-                    positionPill(activePageLink);
-                    updateLinkColors(activePageLink);
-                } else if (contactLink) {
-                    positionPill(contactLink);
-                    updateLinkColors(contactLink);
-                }
-            }
-        });
-    }
-
     // Modal functionality
     const modals = document.querySelectorAll(".modal");
     const closeBtns = document.querySelectorAll(".close-button");
@@ -150,13 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!modal) return;
 
         modal.style.display = 'flex';
-        activeModalLink = document.querySelector(`[href="#${modalId}"]`);
-
-        if (activeModalLink) {
-            positionPill(activeModalLink);
-            updateLinkColors(activeModalLink);
-        }
-
         document.body.style.overflow = 'hidden';
 
         requestAnimationFrame(() => {
@@ -185,16 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('active');
         if (mainContent) {
             mainContent.style.filter = "none";
-        }
-        activeModalLink = null;
-
-        // Return pill to appropriate position
-        if (activePageLink) {
-            positionPill(activePageLink);
-            updateLinkColors(activePageLink);
-        } else if (contactLink) {
-            positionPill(contactLink);
-            updateLinkColors(contactLink);
         }
 
         setTimeout(() => {

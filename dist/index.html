@@ -64,20 +64,21 @@
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-8 left-1/2 -translate-x-1/2 w-auto px-6 py-3 
-                           shadow-lg transition-all duration-300">
-      <div id="nav-links-container" class="relative flex items-center justify-center space-x-4 z-10 dashiell-text">
-        <span id="hover-pill" class="absolute h-8 rounded-full bg-dark-blue transition-all duration-300 -z-10"></span>
-        
-        <a href="./work" id="work-link" class="nav-link text-sm md:text-base px-4 py-2 my-[-0.5rem]"
-          data-default-color="var(--dark-blue)">work</a>
+    <nav id="navbar" class="fixed top-8 left-1/2 -translate-x-1/2 w-auto px-4 py-2.5 
+                           shadow-lg transition-all duration-300 z-50 flex items-center">
+      <div id="nav-links-container"
+        class="relative flex items-center justify-between gap-x-24 md:gap-x-32 z-10 dashiell-text h-full">
+        <a href="./work" id="work-link"
+          class="nav-link text-sm md:text-base px-4 py-1.5 pt-2 leading-none flex items-center">projects</a>
 
-        <a href="./" class="logo-link flex items-center">
-          <img id="wordmark-logo" src="./images/krml25-wordmark-cream.svg" alt="Logo" class="h-8">
+        <a href="javascript:void(0);"
+          class="absolute cursor-default left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center">
+          <img id="wordmark-logo" src="./images/krml25-wordmark-cream.svg" alt="Logo"
+            class="h-6 md:h-8 w-auto object-contain">
         </a>
 
-        <a href="./contact" id="contact-link" class="nav-link text-sm md:text-base px-4 py-2 my-[-0.5rem]"
-          data-default-color="var(--dark-blue)">contact</a>
+        <a href="./contact" id="contact-link"
+          class="nav-link text-sm md:text-base px-4 py-1.5 pt-2 leading-none flex items-center tracking-[0.03em]">contact</a>
       </div>
     </nav>
 
