@@ -743,6 +743,27 @@ async function loadProjects() {
 
         listContainer.innerHTML = listHtml;
         
+        // Update scroll mask
+        const updateScrollMask = () => {
+            const atTop = listContainer.scrollTop <= 0;
+            const atBottom = Math.ceil(listContainer.scrollTop + listContainer.clientHeight) >= listContainer.scrollHeight;
+            listContainer.classList.toggle('at-top', atTop);
+            listContainer.classList.toggle('at-bottom', atBottom);
+        };
+        
+        // Remove old listeners to prevent duplicates if loadProjects is called again
+        if (listContainer._scrollMaskHandler) {
+            listContainer.removeEventListener('scroll', listContainer._scrollMaskHandler);
+            window.removeEventListener('resize', listContainer._scrollMaskHandler);
+        }
+        
+        listContainer._scrollMaskHandler = updateScrollMask;
+        listContainer.addEventListener('scroll', updateScrollMask);
+        window.addEventListener('resize', updateScrollMask);
+        
+        // Initial state
+        setTimeout(updateScrollMask, 50);
+
         if (window.videoProjectsData.length > 0) {
             const hashId = window.location.hash.replace('#', '');
             if (hashId && window.videoProjectsData.some(p => p.id === hashId)) {

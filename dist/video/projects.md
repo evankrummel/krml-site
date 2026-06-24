@@ -25,7 +25,7 @@ Urban exploration through the lens of cyberpunk aesthetics. Neque porro quisquam
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LvWiKqhrhbU?si=oMo7qdmD9zLP1Lb6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-![Article Image](images/test-image.jpg)
+![Article Image](images/sro1-thumb.jpg)
 
 Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.
 
