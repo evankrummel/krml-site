@@ -228,11 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPage = pathSegments[pathSegments.length - 1] || 'index.html';
     let activePageLink = null;
     
-    // Check for /photos, /videos, or /contact paths
+    // Check for /photos, /work, or /contact paths
     if (pathname.includes('/photos') || currentPage === 'photos' || currentPage === 'photos.html' || currentPage === 'index.html') {
         activePageLink = document.getElementById('photo-link');
-    } else if (pathname.includes('/videos') || currentPage === 'videos' || currentPage === 'videos.html') {
-        activePageLink = document.getElementById('video-link');
+    } else if (pathname.includes('/work') || currentPage === 'work' || currentPage === 'work.html') {
+        activePageLink = document.getElementById('work-link');
     } else if (pathname.includes('/contact') || currentPage === 'contact' || currentPage === 'contact.html') {
         activePageLink = document.getElementById('contact-link');
     }

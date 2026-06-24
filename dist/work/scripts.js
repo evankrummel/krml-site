@@ -85,11 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPage = pathSegments[pathSegments.length - 1] || 'index.html';
     let activePageLink = null;
 
-    // Check for /photo, /video, or /contact paths
+    // Check for /photo, /work, or /contact paths
     if (pathname.includes('/photo') || currentPage === 'photo' || currentPage === 'photo.html' || currentPage === 'photos' || currentPage === 'photos.html') {
         activePageLink = document.getElementById('photo-link');
-    } else if (pathname.includes('/video') || currentPage === 'video' || currentPage === 'video.html' || currentPage === 'videos' || currentPage === 'videos.html') {
-        activePageLink = document.getElementById('video-link');
+    } else if (pathname.includes('/work') || currentPage === 'work' || currentPage === 'work.html' || currentPage === 'works' || currentPage === 'works.html') {
+        activePageLink = document.getElementById('work-link');
     } else if (pathname.includes('/contact') || currentPage === 'contact' || currentPage === 'contact.html') {
         activePageLink = document.getElementById('contact-link');
     }
@@ -671,8 +671,8 @@ async function loadProjects() {
 
         let listHtml = `
             <div class="w-full rounded-2xl bg-dark-blue/40 backdrop-blur-md border border-cream/10 px-6 py-4 flex items-center justify-between flex-shrink-0 shadow-inner">
-                <h2 class="h1-text text-3xl text-cream drop-shadow-md">Videography</h2>
-                <div class="font-mono text-xs text-cream/50 mt-1">${projectsRaw.length} Projects</div>
+                <h2 class="h1-text text-3xl text-cream drop-shadow-md">Projects/h2>
+                <div class="font-mono text-xs text-cream/50 mt-1">${projectsRaw.length} Pieces</div>
             </div>
         `;
         window.videoProjectsData = []; // clear if called multiple times
@@ -742,7 +742,7 @@ async function loadProjects() {
         });
 
         listContainer.innerHTML = listHtml;
-        
+
         // Update scroll mask
         const updateScrollMask = () => {
             const atTop = listContainer.scrollTop <= 0;
@@ -750,17 +750,17 @@ async function loadProjects() {
             listContainer.classList.toggle('at-top', atTop);
             listContainer.classList.toggle('at-bottom', atBottom);
         };
-        
+
         // Remove old listeners to prevent duplicates if loadProjects is called again
         if (listContainer._scrollMaskHandler) {
             listContainer.removeEventListener('scroll', listContainer._scrollMaskHandler);
             window.removeEventListener('resize', listContainer._scrollMaskHandler);
         }
-        
+
         listContainer._scrollMaskHandler = updateScrollMask;
         listContainer.addEventListener('scroll', updateScrollMask);
         window.addEventListener('resize', updateScrollMask);
-        
+
         // Initial state
         setTimeout(updateScrollMask, 50);
 
@@ -781,12 +781,12 @@ async function loadProjects() {
 function showArticle(articleId, isInitialLoad = false) {
     const project = window.videoProjectsData.find(p => p.id === articleId);
     if (!project) return;
-    
+
     // Update URL hash without jumping
     if (!isInitialLoad) {
         history.replaceState(null, null, '#' + project.id);
     }
-    
+
     // Highlight the selected item in the list
     document.querySelectorAll('.project-item').forEach(btn => {
         btn.classList.remove('bg-cream/30', 'border-cream/50', 'scale-[1.02]', 'scale-105');
@@ -797,10 +797,10 @@ function showArticle(articleId, isInitialLoad = false) {
         activeBtn.classList.remove('bg-cream/10', 'border-cream/20');
         activeBtn.classList.add('bg-cream/30', 'border-cream/50');
     }
-    
+
     const articlesWrapper = document.getElementById('articles-wrapper');
     if (!articlesWrapper) return;
-    
+
     // Check if we are already showing this article
     const currentArticles = articlesWrapper.querySelectorAll('article');
     if (currentArticles.length > 0 && currentArticles[currentArticles.length - 1].id === project.id) return;
@@ -814,7 +814,7 @@ function showArticle(articleId, isInitialLoad = false) {
             </div>
         </article>
     `;
-    
+
     // Apply grid to wrapper to stack articles on top of each other
     articlesWrapper.style.display = 'grid';
     articlesWrapper.style.alignItems = 'start';
@@ -829,7 +829,7 @@ function showArticle(articleId, isInitialLoad = false) {
         tempDiv.innerHTML = newHtml;
         const newArticle = tempDiv.firstElementChild;
         newArticle.style.gridArea = '1 / 1 / 2 / 2';
-        
+
         // Ensure old articles share the same grid area
         currentArticles.forEach(art => {
             art.style.gridArea = '1 / 1 / 2 / 2';
@@ -845,7 +845,7 @@ function showArticle(articleId, isInitialLoad = false) {
                 { opacity: 1, transform: 'translateY(0)' },
                 { opacity: 0, transform: 'translateY(-10px)' }
             ], { duration: 400, easing: 'ease-out', fill: 'forwards' });
-            
+
             fadeOut.onfinish = () => {
                 oldArticle.remove();
             };

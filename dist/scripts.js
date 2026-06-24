@@ -85,11 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentPage = pathSegments[pathSegments.length - 1] || 'index.html';
     let activePageLink = null;
     
-    // Check for /photo, /video, or /contact paths
+    // Check for /photo, /work, or /contact paths
     if (pathname.includes('/photo') || currentPage === 'photo' || currentPage === 'photo.html' || currentPage === 'photos' || currentPage === 'photos.html') {
         activePageLink = document.getElementById('photo-link');
-    } else if (pathname.includes('/video') || currentPage === 'video' || currentPage === 'video.html' || currentPage === 'videos' || currentPage === 'videos.html') {
-        activePageLink = document.getElementById('video-link');
+    } else if (pathname.includes('/work') || currentPage === 'work' || currentPage === 'work.html' || currentPage === 'works' || currentPage === 'works.html') {
+        activePageLink = document.getElementById('work-link');
     } else if (pathname.includes('/contact') || currentPage === 'contact' || currentPage === 'contact.html') {
         activePageLink = document.getElementById('contact-link');
     }
