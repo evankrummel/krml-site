@@ -557,7 +557,7 @@ async function loadProjects() {
         if (!listContainer || !articlesWrapper) return;
 
         let listHtml = `
-            <div class="w-full rounded-2xl bg-dark-blue/40 backdrop-blur-md border border-cream/10 px-6 py-4 flex items-center justify-between flex-shrink-0 shadow-inner">
+            <div class="w-full rounded-2xl bg-dark-blue/40 backdrop-blur-lg border border-cream/10 px-6 py-4 flex items-center justify-between flex-shrink-0 shadow-inner">
                 <h2 class="h1-text text-3xl text-cream drop-shadow-md">Projects</h2>
                 <div class="font-mono text-xs text-cream/50 mt-1">${projectsRaw.length} Items</div>
             </div>
@@ -613,7 +613,7 @@ async function loadProjects() {
             });
 
             listHtml += `
-                <button id="nav-${articleId}" class="project-item group w-full text-left relative overflow-hidden rounded-2xl bg-cream/10 backdrop-blur-md border border-cream/20 shadow-lg hover:bg-cream/20 transition-all duration-300 flex items-stretch p-4 flex-shrink-0 min-h-[140px] md:min-h-[160px]" onclick="showArticle('${articleId}')">
+                <button id="nav-${articleId}" class="project-item group w-full text-left relative overflow-hidden rounded-2xl bg-cream/10 backdrop-blur-lg border border-cream/20 shadow-lg hover:bg-cream/20 transition-all duration-300 flex items-stretch p-4 flex-shrink-0 min-h-[140px] md:min-h-[160px]" onclick="showArticle('${articleId}')">
                     <div class="flex flex-col justify-center w-2/3 pr-4 z-10 py-2">
                         <div>
                             <h2 class="h1-text text-2xl md:text-3xl text-cream font-bold leading-tight drop-shadow-md">${title}</h2>
