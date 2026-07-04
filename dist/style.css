@@ -96,6 +96,7 @@
         top: 0;
         position: absolute;
         transform: translate3d(-5%, -5%, 0);
+        opacity: 0.3;
     }
 
     .pill-button {
@@ -690,6 +691,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    opacity: 0.3;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

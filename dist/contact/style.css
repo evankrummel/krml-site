@@ -64,13 +64,14 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
+    opacity: 0.3;
 }
 .foreground-image {
     background-image: url('../images/foreground.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    opacity: 0.3;
 }
 
 :root {
