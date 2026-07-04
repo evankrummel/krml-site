@@ -144,7 +144,7 @@
         opacity: 1;
         visibility: visible;
         transform: scale(1);
-        transition: opacity 0.6s ease-out, visibility 0.6s ease-out, transform 0.6s ease-out;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out, transform 0.5s ease-out;
     }
 
     .preloader.hidden {
@@ -227,3 +227,8 @@
     .social-link:hover {
         transform: scale(1.08);
     }
+
+/* Remove tap highlight on mobile for links */
+a, .nav-link {
+    -webkit-tap-highlight-color: transparent;
+}

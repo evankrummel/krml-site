@@ -13,7 +13,7 @@ function hidePreloader() {
             void preloader.offsetHeight;
 
             // Apply transition directly via JavaScript
-            preloader.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            preloader.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
 
             // Use requestAnimationFrame to ensure the transition works
             requestAnimationFrame(() => {
@@ -26,7 +26,7 @@ function hidePreloader() {
                     // Remove preloader from DOM after fade completes
                     setTimeout(() => {
                         preloader.style.display = 'none';
-                    }, 600); // Match the transition duration
+                    }, 500); // Match the transition duration
                 });
             });
         }, 100); // Small delay to ensure visibility
@@ -810,5 +810,41 @@ window.addEventListener('hashchange', () => {
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('video-split-layout')) {
         loadProjects();
+    }
+});
+
+// Preloader Fade Out / In for Links
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#navbar a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            
+            if (!href || href.startsWith('javascript:') || href.startsWith('#')) return;
+            if (e.ctrlKey || e.shiftKey || e.metaKey || e.altKey || link.getAttribute('target') === '_blank') return;
+            
+            e.preventDefault();
+            
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.display = 'flex';
+                void preloader.offsetHeight;
+                preloader.style.transition = 'opacity 0.5s ease-in, transform 0.5s ease-in';
+                preloader.style.opacity = '1';
+                preloader.style.transform = 'scale(1)';
+                preloader.style.pointerEvents = 'auto';
+                
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 500);
+            } else {
+                window.location.href = href;
+            }
+        });
+    });
+});
+
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+        hidePreloader();
     }
 });
